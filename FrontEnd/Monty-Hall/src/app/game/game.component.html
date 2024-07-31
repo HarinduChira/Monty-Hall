@@ -1,0 +1,149 @@
+<style>
+  .btn-img {
+      padding: 0;
+      border: none;
+      background: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-img:hover {
+      transform: translateY(-5px);
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .card {
+      width: 200px;
+  }
+
+  .card-img-top {
+      border-radius: 5px;
+  }
+</style>
+
+
+
+
+<div class="container mt-5">
+
+  <app-instruction></app-instruction>
+
+    
+  <form *ngIf="gameStaus == 0" id="gameForm" class="mb-4">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <label for="numSimulations">Number of Simulations:</label>
+        </div>
+        <div class="col-2">
+            <input 
+              type="number" 
+              class="form-control" 
+              style="width: 100px;" 
+              name="numSimulations" 
+              min="1" max="10"
+              [(ngModel)]="numberOfGames"
+            >
+        </div>
+
+        <div class="col-3">
+          <button 
+            type="button" 
+            class="btn btn-primary btn-lg" 
+            (click)="startGame()"
+          >Start Game</button>
+        </div>    
+    </div>
+  </form>
+
+
+  <div *ngIf="gameStaus == 1" class="row justify-content-center">
+    <div class="row">Please Select a Door</div>
+    <div class="col-xs-12 col-md-4 mb-4 d-flex justify-content-center">
+        <div class="card">
+            <button 
+              class="btn-img" 
+              (click)="selectDoor(1)"
+              >
+                <img *ngIf="goat01 == 0" src="https://img.freepik.com/free-photo/front-view-front-door-with-brown-wall_23-2149360602.jpg?w=360&t=st=1722431150~exp=1722431750~hmac=b6c7fb53a527a75b10e4e0268365ae8116b562f02194d352c87b7f5832e73d1b"
+                alt="Door 02" class="card-img-top">
+                <img *ngIf="goat01 == 1" src="https://i.pinimg.com/originals/ea/ff/89/eaff8998edc8dd51cd312e9ef42dfc08.png"
+                alt="Door 02" class="card-img-top"/>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4 mb-4 d-flex justify-content-center">
+        <div class="card">
+            <button 
+              class="btn-img"
+              (click)="selectDoor(2)"
+              >
+                <img *ngIf="goat02 == 0" src="https://img.freepik.com/free-photo/front-view-front-door-with-brown-wall_23-2149360602.jpg?w=360&t=st=1722431150~exp=1722431750~hmac=b6c7fb53a527a75b10e4e0268365ae8116b562f02194d352c87b7f5832e73d1b"
+                alt="Door 02" class="card-img-top">
+                <img *ngIf="goat02 == 1" src="https://i.pinimg.com/originals/ea/ff/89/eaff8998edc8dd51cd312e9ef42dfc08.png"
+                alt="Door 02" class="card-img-top"/>
+            </button>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4 mb-4 d-flex justify-content-center">
+        <div class="card">
+            <button 
+              class="btn-img"
+              (click)="selectDoor(3)"
+              >
+                <img *ngIf="goat03 == 0" src="https://img.freepik.com/free-photo/front-view-front-door-with-brown-wall_23-2149360602.jpg?w=360&t=st=1722431150~exp=1722431750~hmac=b6c7fb53a527a75b10e4e0268365ae8116b562f02194d352c87b7f5832e73d1b"
+                alt="Door 02" class="card-img-top">
+                <img *ngIf="goat03 == 1" src="https://i.pinimg.com/originals/ea/ff/89/eaff8998edc8dd51cd312e9ef42dfc08.png"
+                alt="Door 02" class="card-img-top"/>
+            </button>
+        </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="gameStaus == 1" class="row" >
+    <div class="col-12">
+      <h3>Game Status</h3>
+      <div class="alert alert-primary" role="alert">
+        <p>You Have {{numberOfGames}} more attempts left</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="gameStaus == 2" class="mt-5">
+
+    <div>
+      <button type="button" class="btn btn-danger">Reset Game</button>
+    </div>
+    
+    <div>
+
+      <h3>Results</h3>
+      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Total Games</th>
+            <th scope="col">Wins</th>
+            <th scope="col">Losses</th>
+            <th scope="col">Change Door</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+
+</div>
+  
