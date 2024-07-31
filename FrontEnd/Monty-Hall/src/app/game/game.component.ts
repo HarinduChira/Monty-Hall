@@ -6,10 +6,14 @@ import { CommonModule } from '@angular/common';
 import { result } from '../../models/result';
 import { SimulationService } from '../services/simulation.service'; 
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [InstructionComponent, FormsModule, CommonModule],
+  imports: [InstructionComponent, FormsModule, CommonModule, HttpClientModule],
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
