@@ -1,4 +1,4 @@
-export class result{
+export class results{
   constructor(
       public selectedDoor : number,
       public openedDoor : number,
