@@ -45,9 +45,13 @@ export class GameComponent {
     // Method to start the game
     startGame() {
 
+      alert(this.numberOfGames);
+
       if (this.numberOfGames != 0) {
+
+        this.gameStatus = 1; // Set game status to in progress
          
-        this.gamePlay(); // Start the game
+        this.gamePlay(this.numberOfGames); // Start the game
   
       } else {
         Swal.fire({
@@ -63,22 +67,20 @@ export class GameComponent {
       }
     }
 
-    gamePlay() {
+    gamePlay(games: number) {
 
-      this.gameStatus = 1; // Set game status to in progress
-
-      for (let i = 1; i < this.numberOfGames; i++) {
-  
-        alert("choose a door");
-
+      for (let i = 0; i < games; i++) {
+      
         this.openGoat(); // Open a goat door
-
-        this.getChoices(); // Ask the player if they want to change the door
-
+  
+        this.getChoices(); // Ask the player to change the door
+  
         this.checkWin(); // Check if the player wins or loses
-
+  
         this.restartGame(); // Restart the game
-      }
+  
+      }                
+
 
       this.gameStatus = 2; // Set game status to finished
 

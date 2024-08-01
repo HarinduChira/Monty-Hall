@@ -2,7 +2,7 @@
   <app-instruction></app-instruction>
 
   <!-- Game Form -->
-  <form *ngIf="gameStatus === 0" id="gameForm" class="mb-4">
+  <form *ngIf="gameStatus == 0" id="gameForm" class="mb-4">
     <div class="row justify-content-center">
       <div class="col-3">
         <label for="numSimulations">Number of Simulations:</label>
@@ -29,7 +29,7 @@
   </form>
 
   <!-- Door Selection -->
-  <div *ngIf="gameStatus === 1" class="row justify-content-center">
+  <div *ngIf="gameStatus == 1" class="row justify-content-center">
     <div class="row">
       <h2>Please Select a Door</h2>
     </div>
