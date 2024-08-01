@@ -41,17 +41,14 @@ export class GameComponent {
 
   @Output() items = new EventEmitter<results[]>();
 
-
     // Method to start the game
     startGame() {
-
-      alert(this.numberOfGames);
 
       if (this.numberOfGames != 0) {
 
         this.gameStatus = 1; // Set game status to in progress
          
-        this.gamePlay(this.numberOfGames); // Start the game
+        this.gamePlay(); // Start the game
   
       } else {
         Swal.fire({
@@ -67,26 +64,28 @@ export class GameComponent {
       }
     }
 
-    gamePlay(games: number) {
+    gamePlay() {
 
-      for (let i = 0; i < games; i++) {
+      if (this.numberOfGames != 0) {
       
         this.openGoat(); // Open a goat door
   
         this.getChoices(); // Ask the player to change the door
   
-        this.checkWin(); // Check if the player wins or loses
+        this.checkWin(); // Check if the player wins or loses 
   
-        this.restartGame(); // Restart the game
+      }else{
+
+
+        this.gameStatus = 2; // Set game status to finished
+
+        this.displayResults(); // Display the results of the game
   
-      }          
+        this.resetGame(); // Reset the game
+     }
 
 
-      this.gameStatus = 2; // Set game status to finished
 
-      this.displayResults(); // Display the results of the game
-
-      this.resetGame(); // Reset the game
     }
 
   
@@ -160,14 +159,16 @@ export class GameComponent {
       this.passResult(); // Store the result
     });
 
+    this.numberOfGames--; // Decrease the number of games
+
+    this.restartGame(); // Restart the game
+
   }
 
     // Method to store the result of the game
     passResult() {
 
       const resultObj = new results(this.selectedDoor, this.openedDoor, this.prizeDoor, this.choice, this.status);
-
-      alert(resultObj);
       
       this.items.emit([resultObj]); // Emit the result to the parent component
       
@@ -184,6 +185,8 @@ export class GameComponent {
     this.prizeDoor = NaN; // Reset the prize door
     this.choice = ""; // Reset the choice
     this.status = null; // Reset the status
+
+    this.restartGame(); // Restart the game
 
   }
 
