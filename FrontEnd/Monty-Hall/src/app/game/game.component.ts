@@ -26,9 +26,9 @@ export class GameComponent {
   goat02: number = 0; // State of Door 2
   goat03: number = 0; // State of Door 3
 
-  selectedDoor: number = 0; // The door selected by the player
-  openedDoor: number = 0; // The door opened by the host showing a goat
-  prizeDoor: number = 0; // The door that has the prize (car)
+  selectedDoor: number = NaN; // The door selected by the player
+  openedDoor: number = NaN; // The door opened by the host showing a goat
+  prizeDoor: number = NaN; // The door that has the prize (car)
   choice: string = ""; // Player's choice (change or Stay in the door)
 
   @Input() result: results[] = []; // Array to store the results of the game
@@ -69,24 +69,24 @@ export class GameComponent {
 
     gamePlay(games: number) {
 
-      // for (let i = 0; i < games; i++) {
+      for (let i = 0; i < games; i++) {
       
         this.openGoat(); // Open a goat door
   
-         // Ask the player to change the door
+        this.getChoices(); // Ask the player to change the door
   
-        // Check if the player wins or loses
+        this.checkWin(); // Check if the player wins or loses
   
         this.restartGame(); // Restart the game
   
-      // }          
+      }          
 
 
-      // this.gameStatus = 2; // Set game status to finished
+      this.gameStatus = 2; // Set game status to finished
 
-      // this.displayResults(); // Display the results of the game
+      this.displayResults(); // Display the results of the game
 
-      // this.resetGame(); // Reset the game
+      this.resetGame(); // Reset the game
     }
 
   
@@ -116,12 +116,12 @@ export class GameComponent {
       
     });
 
-    this.checkWin();
+
   }
 
   // Method to open a goat door after the player selects a door
   openGoat() {
-
+ 
     const doors = [1, 2, 3]; 
     const doorIndex = doors.indexOf(this.selectedDoor);
     doors.splice(doorIndex, 1); // Remove the selected door from the array
@@ -131,7 +131,7 @@ export class GameComponent {
     else if (this.openedDoor === 2) this.goat02 = 1; // Door 2 opened
     else if (this.openedDoor === 3) this.goat03 = 1; // Door 3 opened
 
-    this.getChoices();
+    
 
   }
 
@@ -176,12 +176,12 @@ export class GameComponent {
   // Method to restart the game
   restartGame() {
 
-    this.goat01 = 0; // Close Door 1
-    this.goat02 = 0; // Close Door 2
-    this.goat03 = 0; // Close Door 3
-    this.selectedDoor = 0; // Reset the selected door
-    this.openedDoor = 0; // Reset the opened door
-    this.prizeDoor = 0; // Reset the prize door
+    this.goat01 = NaN; // Close Door 1
+    this.goat02 = NaN; // Close Door 2
+    this.goat03 =NaN; // Close Door 3
+    this.selectedDoor = NaN; // Reset the selected door
+    this.openedDoor = NaN; // Reset the opened door
+    this.prizeDoor = NaN; // Reset the prize door
     this.choice = ""; // Reset the choice
     this.status = null; // Reset the status
 
