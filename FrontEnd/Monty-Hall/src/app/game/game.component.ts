@@ -69,24 +69,24 @@ export class GameComponent {
 
     gamePlay(games: number) {
 
-      for (let i = 0; i < games; i++) {
+      // for (let i = 0; i < games; i++) {
       
         this.openGoat(); // Open a goat door
   
-        this.getChoices(); // Ask the player to change the door
+         // Ask the player to change the door
   
-        this.checkWin(); // Check if the player wins or loses
+        // Check if the player wins or loses
   
         this.restartGame(); // Restart the game
   
-      }                
+      // }          
 
 
-      this.gameStatus = 2; // Set game status to finished
+      // this.gameStatus = 2; // Set game status to finished
 
-      this.displayResults(); // Display the results of the game
+      // this.displayResults(); // Display the results of the game
 
-      this.resetGame(); // Reset the game
+      // this.resetGame(); // Reset the game
     }
 
   
@@ -94,10 +94,6 @@ export class GameComponent {
 
     this.selectedDoor = door; // Set the selected door
   }
-
-
-
-
 
 
   getChoices() {
@@ -119,6 +115,8 @@ export class GameComponent {
       this.choice = this.changeDoor ? "Changed" : "stay";
       
     });
+
+    this.checkWin();
   }
 
   // Method to open a goat door after the player selects a door
@@ -133,18 +131,18 @@ export class GameComponent {
     else if (this.openedDoor === 2) this.goat02 = 1; // Door 2 opened
     else if (this.openedDoor === 3) this.goat03 = 1; // Door 3 opened
 
+    this.getChoices();
+
   }
 
   // Method to check if the player wins or loses
   checkWin() {
 
     const doors = [1, 2, 3]; 
-    const doorIndex = doors.indexOf(this.selectedDoor);
-    doors.splice(doorIndex, 1); // Remove the selected door from the array
     const goatIndex = doors.indexOf(this.openedDoor);
     doors.splice(goatIndex, 1); // Remove the opened door from the array
 
-    this.prizeDoor = doors[0]; // The remaining door has the prize
+    this.prizeDoor = doors[Math.floor(Math.random() * doors.length)]; // Randomly select the door with the prize
 
     this.status = this.selectedDoor === this.prizeDoor ? "win" : "lose"; // Set status based on selected door
 
@@ -168,6 +166,8 @@ export class GameComponent {
     passResult() {
 
       const resultObj = new results(this.selectedDoor, this.openedDoor, this.prizeDoor, this.choice, this.status);
+
+      alert(resultObj);
       
       this.items.emit([resultObj]); // Emit the result to the parent component
       
