@@ -1,0 +1,29 @@
+
+// Get All Results
+
+GET http://localhost:5097/results
+
+
+//  Add Result
+POST http://localhost:5097/api/addaddResult
+Content-Type: application/json
+
+{
+    "selectedDoor": 2,
+    "openedDoor": 3,
+    "prizeDoor" : 2,
+    "choice" : "stay",
+    "status" : "won"
+}
+
+
+// Clear All Results
+DELETE http://localhost:5097/results
+
+
+GET http://localhost:5097/api
+
+
+GET http://localhost:5097/api/results
+
+
