@@ -30,7 +30,9 @@ export class MontyHallService {
       throw new Error('Network response was not ok');
     }
 
-    return response.json();
+    const data : MontyHallResult[] = await response.json();
+
+    return data;
   }
 
   async getResultsByChoice(choice: string): Promise<MontyHallResult[]> {

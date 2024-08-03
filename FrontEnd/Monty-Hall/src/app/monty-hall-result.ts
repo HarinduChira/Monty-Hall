@@ -1,8 +1,8 @@
 export class MontyHallResult {
-    SelectedDoor!: number;
-    OpenedDoor!: number;
-    PrizeDoor!: number;
-    Choice!: string;
-    Status!: string;
+    selectedDoor!: number;
+    openedDoor!: number;
+    prizeDoor!: number;
+    choice!: string;
+    status!: string;
   }
   
