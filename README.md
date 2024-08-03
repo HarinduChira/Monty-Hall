@@ -11,7 +11,7 @@ The Monty Hall problem is a probability puzzle based on the American television 
 - Initially, you pick one of the three doors.
 - The host, who knows what is behind each door, opens one of the other two doors to reveal a goat.
 - You are then given a choice to stick with your original door or switch to the remaining closed door.
-- Reset the game at any time to start over.
+- Reset the game at last to start over.
 
 ### How to Play
 1. **Select Number of Games**: Choose the number of games you want to play and press **Start**.
@@ -23,10 +23,15 @@ The Monty Hall problem is a probability puzzle based on the American television 
 - The game keeps track of your choices and outcomes.
 - The winning percentage for each choice (switching or staying) is displayed for you to analyze.
 
-## Getting Started
+## Tech Stack Used
 
-### Prerequisites
-- Ensure you have [Node.js](https://nodejs.org/) and [Angular CLI](https://angular.io/cli) installed.
+- **Frontend**:
+  - **Angular**: For building the user interface.
+  - **Bootstrap**: For styling and responsive layout.
+  - **TypeScript**: For application logic.
+
+- **Backend**:
+  - **.NET**: For building the RESTful API.
 
 ### Installation
 1. Clone the repository:
