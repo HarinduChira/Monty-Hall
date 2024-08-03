@@ -34,12 +34,29 @@ export class GameComponent {
   choice : string = ""; // Player's choice to switch or not to switch
   status : string = ""; // Player's status (win or lose)
 
-  switchWinPercentage: number = 0;
-  stayWinPercentage: number = 0;
+  switchWinPercentage: number = 0; // Percentage of wins when switching doors
+  stayWinPercentage: number = 0; // Percentage of wins when staying with the initial choice
+
+  Results : MontyHallResult [] = []; // Array of results
 
 
   startGame(){    
+    if(this.numOfGames == 0){
+      Swal.fire({
+        title: 'Oops...',
+        text: 'Please enter the number of games to be played',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        customClass: {
+            confirmButton: 'btn btn-primary px-4'
+        },
+        buttonsStyling: false,
+        allowOutsideClick: false
+            
+        });
+    }else{
     this.displayDoors();
+    }
   }
 
 
@@ -229,7 +246,7 @@ export class GameComponent {
     this.gameStatus = 0;
   }
 
-  Results : MontyHallResult [] = []; // Array of results
+  
   
   ngOnInit(): void {
     this.getResults();

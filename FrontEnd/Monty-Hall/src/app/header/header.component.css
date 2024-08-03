@@ -1,0 +1,14 @@
+h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-top: 20px;
+    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000; /* Emboss effect */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* This makes the container take up the full height of the viewport */
+    background-color: #022850; /* Background color */
+}
