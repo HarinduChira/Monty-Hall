@@ -31,7 +31,7 @@ The Monty Hall problem is a probability puzzle based on the American television 
 ### Installation
 1. Clone the repository:
 
-  git clone https://github.com/HarinduChira/Monty-Hall.git
+  git clone [https://github.com/HarinduChira/Monty-Hall.git](https://github.com/HarinduChira/Monty-Hall.git)
 
 
 ## Demonstration of the Project
